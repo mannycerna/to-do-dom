@@ -6,25 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     
 
         
-    <h2>To Do List</h2>
-    <form id="tdlForm">
+    <h2 class="header">To Do List</h2>
+    <form id="tdlForm" class='form'> 
         
         <label>Add to your To-Do list!</label><br>
         <input id="textInput" type="text" autocomplete="off">
-        <br><br>
         <input id="submit"  type="submit" value="Add Item">
         
         <br>
     </form>
         <br>
-        <button id="removeCompleted">Remove All Completed Tasks</button>
-        <ul id="toDoList">
-        </ul>
+        <button id="removeCompleted">Remove  Completed Tasks</button>
+
+        <button id="removeAll">Remove All</button>
+
+        <ul id="toDoList" contenteditable="true"></ul>
+
+        <button id="editList" style="visibility:hidden" >Edit List</button>
+
+        <br><br>
+
+        <input id="newInput1" type="text" autocomplete="off" style="visibility:hidden">
+
+        <br><br>
+
+        <button id="saveEdit" style="visibility:hidden" onclick="">Save Edit </button>
+        
 
 
     

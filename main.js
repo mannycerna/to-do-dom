@@ -26,69 +26,91 @@ JS
 
 
 */
-
+//create query selectors to access html form elements
 let tdlForm = document.querySelector('#tdlForm');
 let textInput = document.querySelector('#textInput');
+
 let toDoList = document.querySelector('#toDoList');
-
 let listItems = document.querySelectorAll('#toDoList li');
-let removeBtn = document.querySelector('#removeCompleted');
-let clearAll = document.querySelector('#clearAll');
 
+//query selectors to remove elements
+    let removeCompleted = document.querySelector('#removeCompleted');
+    let removeAll = document.querySelector('#removeAll');
 
-tdlForm.addEventListener('submit', function(event){
+//add an event listener to form 
+    tdlForm.addEventListener('submit', function(event){
     event.preventDefault();
 
-    //create new list item
-    let newItem = document.createElement('li');
-
-    //create strikeout
-    newItem.addEventListener('click', function(event){
-        event.preventDefault();
-
-        
-        console.log("Strikeout works");
-
-        if(newItem.style.textDecoration === 'line-through'){
-            newItem.style.textDecoration = '';
-        } else{
-            newItem.style.textDecoration = 'line-through';
-        }
-    })
-
-
-
-    //give list item text from textInput box
+//create new list item
+    let newItem = document.createElement("li");
     newItem.innerText = textInput.value;
-
-    console.log(newItem);
 
     toDoList.appendChild(newItem);
     textInput.value = '';
 
+    listItems = document.querySelectorAll('#toDoList li');
 
+//create strikethrough
+    newItem.addEventListener('click', function(event){
+        event.preventDefault();
+        
+        // console.log("Strikeout works"); //test code
+        if(newItem.style.textDecoration === 'line-through'){
+            newItem.style.textDecoration = '';
+            // newItem.checked = false;
+        } else{
+            newItem.style.textDecoration = 'line-through';
+            // newItem.checked = true;
+        }
+    })
 });
 
-removeBtn.addEventListener('click', function(event){
-    event.preventDefault();
+//remove completed only
+    removeCompleted.addEventListener('click', function(event){
+        event.preventDefault();
+        removeCompletedList(toDoList);
+    });
 
-    removeAllChildNodes(toDoList);
-    // for(let i = 0; i < listItems.length; i++){
-    //     listItems[i].remove();
-    // }
+    function removeCompletedList() {
+    for(let i = 0; i < listItems.length; i++){
+        if(listItems[i].style.textDecoration !== '') {
+            listItems[i].remove();
+            console.log("Item removed:" + listItems[i].innerText);
+            } else {
 
+            }
 
-})
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        if(parent.firstChild.style.textDecoration !== '') {
-            parent.removeChild(parent.firstChild);
         }
+    };
+
+//remove all
+    removeAll.addEventListener('click', function(event){
+        event.preventDefault();
+        removeAllList(toDoList);
         
+    })
 
+    function removeAllList() {
+        // listItems = document.querySelectorAll('#toDoList li');
+        // console.log("TEST");
+    
+    for(let i = 0; i < listItems.length; i++){
+            // console.log("Test remove all while loop");
+            listItems[i].remove();
+            console.log("Post remove all");
+            console.log(listItems);
+            
 
+        }
     }
-}
+
+    
+
+
+            
+            
+        
+    
 
 
 
