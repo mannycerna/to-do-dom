@@ -6,12 +6,9 @@ To-Do List DOM notes
 -document.createElement to create list items
 -appendChild to add to our list
 
-
-
 2.  Users have ability to view to-do items
 -list to keep track of our to-do items
 -querySelectorAll (or bubbling) which creates an array that allows  access of array of list items.
-
 
 HTML(create elements within the index.html)
 -form
@@ -19,17 +16,13 @@ HTML(create elements within the index.html)
 -buttons
 -text input
 
-
 JS
 -list items (create dynamic html elements)
-
-
-
 */
+
 //create query selectors to access html form elements
 let tdlForm = document.querySelector('#tdlForm');
 let textInput = document.querySelector('#textInput');
-
 let toDoList = document.querySelector('#toDoList');
 let listItems = document.querySelectorAll('#toDoList li');
 
@@ -76,10 +69,7 @@ let listItems = document.querySelectorAll('#toDoList li');
         if(listItems[i].style.textDecoration !== '') {
             listItems[i].remove();
             console.log("Item removed:" + listItems[i].innerText);
-            } else {
-
             }
-
         }
     };
 
@@ -88,12 +78,9 @@ let listItems = document.querySelectorAll('#toDoList li');
         event.preventDefault();
         removeAllList(toDoList);
         
-    })
+    });
 
     function removeAllList() {
-        // listItems = document.querySelectorAll('#toDoList li');
-        // console.log("TEST");
-    
     for(let i = 0; i < listItems.length; i++){
             // console.log("Test remove all while loop");
             listItems[i].remove();
@@ -102,7 +89,7 @@ let listItems = document.querySelectorAll('#toDoList li');
             
 
         }
-    }
+    };
 
     
 
